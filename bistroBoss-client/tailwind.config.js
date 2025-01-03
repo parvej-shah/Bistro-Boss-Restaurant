@@ -9,7 +9,10 @@ export default {
       colors: {
         primaryText: "#151515",
         secondaryText:"#D99904",
-        navText:"#EEFF25"
+        navText:"#EEFF25",
+        secondaryBg:"#F3F3F3",
+        btnBgHover:"#1F2937",
+        btnBg:"#E8E8E8",
       }
     },
   },

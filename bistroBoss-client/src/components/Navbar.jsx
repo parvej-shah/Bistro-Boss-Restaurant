@@ -13,7 +13,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-primaryText/50 opacity-80 fixed top-0 z-10 w-full">
+    <nav className="bg-primaryText/70 opacity-90 fixed top-0 z-10 w-full">
     <div className="flex justify-between items-center container py-2 mx-auto">
       <div className="">
         <h1 className="text-3xl font-black text-white uppercase">Bistro Boss</h1>
@@ -72,14 +72,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-primaryText/50 opacity-50 rounded-box z-[50] mt-3 w-fit p-2 mr-2 shadow"
+            className="menu menu-sm dropdown-content bg-primaryText/70 opacity-90 rounded-box z-[50] mt-3 w-fit p-2 mr-2 shadow"
           >
             {navItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.path}
-              className={({ isActive }) =>
-                `text-lg btn btn-sm hover:bg-transparent bg-transparent shadow-none border-none font-extrabold transition duration-200 text-white ${isActive ? "text-navText" : "hover:text-navText"}`
+              className={({ isActive }) =>`text-lg btn btn-sm hover:bg-transparent bg-transparent shadow-none border-none font-extrabold transition duration-300 text-white ${isActive ? "text-navText" : "hover:text-navText"}`
               }
             >
               <li> {item.name}</li>
