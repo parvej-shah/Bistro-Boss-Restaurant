@@ -1,27 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import useMenu from "../../hooks/useMenu";
+import LoadingClip from "../LoadingClip";
 
 export default function MenuList({menu}) {
-  const [menus, setMenus] = useState([]);
-  const [filteredMenus, setFilteredMenus] = useState([]);
-  useEffect(() => {
-    const getMenu = async () => {
-      const { data } = await axios.get("menu.json");
-      setMenus(data);
-    };
-    getMenu();
-  }, []);
-  useEffect(() => {
-    if (menus.length > 0) {
-      const filtered = menus.filter((item) => item.category === menu);
-      setFilteredMenus(filtered);
-    }
-  }, [menus, menu]);
-  console.log(filteredMenus);
+  const {foods, isLoading} = useMenu(menu);
+  if(isLoading) return <LoadingClip/>
   return (
     <div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 container mx-auto">
-      {filteredMenus?.map((item) => (
+      {foods?.map((item) => (
         <div className="card card-side px-4 md:px-0">
           <div className="w-3/5 md:w-1/3">
             <img

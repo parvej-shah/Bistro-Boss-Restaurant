@@ -1,20 +1,14 @@
-import { useQuery} from "@tanstack/react-query";
-import React from "react";
+import useMenu from "../../hooks/useMenu";
 import LoadingClip from "../LoadingClip";
-import API from "../../hooks/useAPI";
 
-export default function FoodCart({category="popular"}) {
-  const {data:foods,isLoading} = useQuery({ queryKey: ['foodcart',category], queryFn: async () => {
-    const {data} = await API.get("/menu",{params:{category}});
-    return data;
-  }})
-  console.log(foods);
+export default function FoodCart({category}) {
+  const {foods, isLoading} = useMenu(category);
   if(isLoading) return <LoadingClip/>;
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto px-3">
       {
         foods?.map((food) =>(
-            <div key={food._id} className="card rounded-none bg-secondaryBg shadow-xl mx-2 md:mx-0">
+            <div key={food._id} className="card rounded-none bg-secondaryBg shadow-xl">
               <div>
                 <img
                   src={food.image}
